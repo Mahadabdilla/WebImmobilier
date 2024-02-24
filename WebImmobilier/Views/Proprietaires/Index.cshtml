@@ -1,0 +1,44 @@
+﻿@model PagedList.IPagedList<WebImmobilier.Models.Proprietaire>
+@using PagedList.Mvc
+@using WebImmobilier.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Resourceimmo.TitredeProprio</h2>
+
+<p>
+    @Html.ActionLink(Resourceimmo.Nouveau, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().NomProprio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PrenomProprio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomProprio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomProprio)
+            </td>
+            <td>
+                @Html.ActionLink(Resourceimmo.Modifier, "Edit", new { id = item.IdProprio }) |
+                @Html.ActionLink(Resourceimmo.VoirDetails, "Details", new { id = item.IdProprio }) |
+                @Html.ActionLink(Resourceimmo.Supprimer, "Delete", new { id = item.IdProprio });
+            </td>
+        </tr>
+    }
+
+</table>
+@Page @(Model.PageCount<Model.PageNumber? 0 : Model.PageNumber)/ @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

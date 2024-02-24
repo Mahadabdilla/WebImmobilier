@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebImmobilier.Models.Utilisateur>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomUtil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrenomUtil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pwd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomUtil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrenomUtil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pwd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdUtilisateur }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdUtilisateur }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdUtilisateur })
+        </td>
+    </tr>
+}
+
+</table>

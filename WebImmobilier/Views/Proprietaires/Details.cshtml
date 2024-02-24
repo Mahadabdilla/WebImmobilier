@@ -1,0 +1,35 @@
+﻿@model WebImmobilier.Models.Proprietaire
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Proprietaire</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomProprio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomProprio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrenomProprio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrenomProprio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProprio }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
